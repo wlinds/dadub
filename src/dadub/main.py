@@ -11,7 +11,7 @@ TARGET_CHANNEL_ID = 0000000000000000000 # Enter Discord Channel (as int)
 
 
 # Define the file type extensions (ext) you want to download
-file_types = ['.jpg', '.png', '.gif', '.pdf'] # Default to images and pdf, but works with any file extension (wav, mp3, mov, etc)
+FILE_TYPES = ['.jpg', '.png', '.gif', '.pdf'] # Default to images and pdf, but works with any file extension (wav, mp3, mov, etc)
 
 DOWNLOAD_DIR = 'downloaded_files'
 
@@ -27,7 +27,7 @@ async def on_ready():
         async for message in target_channel.history(limit=None):  # None to fetch all messages
             if message.attachments:
                 for attachment in message.attachments:
-                    if any(attachment.filename.endswith(ext) for ext in file_types): # Get all files matching file_types
+                    if any(attachment.filename.endswith(ext) for ext in FILE_TYPES): # Get all files matching selected exrensions
                         async with aiohttp.ClientSession() as session:
                             async with session.get(attachment.url) as resp:
                                 if resp.status == 200:
