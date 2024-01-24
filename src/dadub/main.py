@@ -5,14 +5,11 @@ import os
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-TOKEN = "your_bot_token" # Enter Token (as string)
+# Enter Token (as string) and Discord Channel (as int)
 
-TARGET_CHANNEL_ID = 0000000000000000000 # Enter Discord Channel (as int)
-
-
-# Define the file type extensions (ext) you want to download
-FILE_TYPES = ['.jpg', '.png', '.gif', '.pdf'] # Default to images and pdf, but works with any file extension (wav, mp3, mov, etc)
-
+TOKEN = "your_bot_token"
+TARGET_CHANNEL_ID = 0000000000000000000
+FILE_TYPES = ['.jpg', '.png', '.gif', '.pdf'] # works with any file extension (wav, mp3, mov, etc)
 DOWNLOAD_DIR = 'downloaded_files'
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
@@ -27,7 +24,7 @@ async def on_ready():
         async for message in target_channel.history(limit=None):  # None to fetch all messages
             if message.attachments:
                 for attachment in message.attachments:
-                    if any(attachment.filename.endswith(ext) for ext in FILE_TYPES): # Get all files matching selected exrensions
+                    if any(attachment.filename.endswith(ext) for ext in FILE_TYPES): # Get all files matching selected extensions
                         async with aiohttp.ClientSession() as session:
                             async with session.get(attachment.url) as resp:
                                 if resp.status == 200:
