@@ -3,7 +3,7 @@
 
 Easily download any attatchment from any Discord Server.
 
-Simple python script that allows you to download attachments (files) from a specified Discord channel. You can configure it to download specific file types, making it a useful tool for archiving media or documents shared in your Discord server.
+Simple Python script that allows you to download attachments (files) from a specified Discord channel. You can configure it to download specific file types, making it a useful tool for archiving media or documents shared in your Discord servers.
 
 ## Dependencies
 
